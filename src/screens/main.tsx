@@ -3,6 +3,7 @@ import { Pressable } from 'react-native'
 import { Text, Box, Center, VStack, useColorModeValue } from 'native-base'
 import ThemeToggle from '../components/theme-toggle'
 import AnimatedCheckbox from '../components/animated-checkbox'
+import TaskItem from '../components/task-item'
 
 export default function MainScreen() {
   const [checked, setChecked] = useState(false)
@@ -19,11 +20,7 @@ export default function MainScreen() {
       flex={1}
     >
       <VStack space={5} alignItems="center">
-        <Box w="100px" h="100px">
-          <Pressable onPress={handlePressCheckbox}>
-            <AnimatedCheckbox checked={checked}></AnimatedCheckbox>
-          </Pressable>
-        </Box>
+        <TaskItem isDone={checked} onToggleCheckbox={handlePressCheckbox} />
         <Box p={10} bg={useColorModeValue('red.500', 'yellow.500')}>
           <Text>Hello</Text>
         </Box>
