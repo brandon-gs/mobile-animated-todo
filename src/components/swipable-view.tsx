@@ -1,19 +1,19 @@
 import React from 'react'
+import { Dimensions } from 'react-native'
 import {
   PanGestureHandler,
-  PanGestureHandlerProps,
   PanGestureHandlerGestureEvent,
+  PanGestureHandlerProps
 } from 'react-native-gesture-handler'
 import Animated, {
   useAnimatedGestureHandler,
   useSharedValue,
   useAnimatedStyle,
   withTiming,
-  runOnJS,
+  runOnJS
 } from 'react-native-reanimated'
 import { Box } from 'native-base'
 import { makeStyledComponent } from '../utils/styled'
-import { Dimensions } from 'react-native'
 
 const StyledView = makeStyledComponent(Animated.View)
 
@@ -26,9 +26,8 @@ interface Props extends Pick<PanGestureHandlerProps, 'simultaneousHandlers'> {
 const { width: SCREEN_WIDTH } = Dimensions.get('window')
 const SWIPE_THRESHOLD = -SCREEN_WIDTH * 0.2
 
-export default function SwipeableView(props: Props) {
+const SwipeView = (props: Props) => {
   const { children, backView, onSwipeLeft, simultaneousHandlers } = props
-
   const translateX = useSharedValue(0)
 
   const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
@@ -43,15 +42,15 @@ export default function SwipeableView(props: Props) {
       } else {
         translateX.value = withTiming(0)
       }
-    },
+    }
   })
 
   const facadeStyle = useAnimatedStyle(() => ({
     transform: [
       {
-        translateX: translateX.value,
-      },
-    ],
+        translateX: translateX.value
+      }
+    ]
   }))
 
   return (
@@ -70,3 +69,5 @@ export default function SwipeableView(props: Props) {
     </StyledView>
   )
 }
+
+export default SwipeView

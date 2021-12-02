@@ -1,7 +1,6 @@
 import React from 'react'
 import AppContainer from './src/components/app-container'
-import Navigator from './src'
-import MainScreen from './src/screens/main'
+import Navigator from './src/'
 
 export default function App() {
   return (

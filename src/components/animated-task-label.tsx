@@ -7,7 +7,7 @@ import Animated, {
   withTiming,
   withSequence,
   withDelay,
-  interpolateColor,
+  interpolateColor
 } from 'react-native-reanimated'
 
 interface Props {
@@ -29,7 +29,7 @@ const AnimatedTaskLabel = memo((props: Props) => {
   const hstackOffset = useSharedValue(0)
   const hstackAnimatedStyles = useAnimatedStyle(
     () => ({
-      transform: [{ translateX: hstackOffset.value }],
+      transform: [{ translateX: hstackOffset.value }]
     }),
     [strikethrough]
   )
@@ -40,7 +40,7 @@ const AnimatedTaskLabel = memo((props: Props) => {
         textColorProgress.value,
         [0, 1],
         [textColor, inactiveTextColor]
-      ),
+      )
     }),
     [strikethrough, textColor, inactiveTextColor]
   )
@@ -52,7 +52,7 @@ const AnimatedTaskLabel = memo((props: Props) => {
         textColorProgress.value,
         [0, 1],
         [textColor, inactiveTextColor]
-      ),
+      )
     }),
     [strikethrough, textColor, inactiveTextColor]
   )

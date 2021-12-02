@@ -1,22 +1,19 @@
 import React, { useCallback } from 'react'
+import { PanGestureHandlerProps } from 'react-native-gesture-handler'
+import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
 import {
-  NativeSyntheticEvent,
   Pressable,
-  TextInputChangeEventData,
-} from 'react-native'
-import {
   Box,
   HStack,
   useColorModeValue,
-  useToken,
   Icon,
   Input,
+  useToken
 } from 'native-base'
-import AnimatedCheckbox from './animated-checkbox'
+import AnimatedCheckbox from 'react-native-checkbox-reanimated'
 import AnimatedTaskLabel from './animated-task-label'
-import SwipeableView from './swipable-view'
+import SwipableView from './swipable-view'
 import { Feather } from '@expo/vector-icons'
-import { PanGestureHandlerProps } from 'react-native-gesture-handler'
 
 interface Props extends Pick<PanGestureHandlerProps, 'simultaneousHandlers'> {
   isEditing: boolean
@@ -39,7 +36,7 @@ const TaskItem = (props: Props) => {
     onRemove,
     onChangeSubject,
     onFinishEditing,
-    simultaneousHandlers,
+    simultaneousHandlers
   } = props
 
   const highlightColor = useToken(
@@ -70,7 +67,7 @@ const TaskItem = (props: Props) => {
   )
 
   return (
-    <SwipeableView
+    <SwipableView
       simultaneousHandlers={simultaneousHandlers}
       onSwipeLeft={onRemove}
       backView={
@@ -80,7 +77,7 @@ const TaskItem = (props: Props) => {
           bg="red.500"
           alignItems="flex-end"
           justifyContent="center"
-          pr={3}
+          pr={4}
         >
           <Icon color="white" as={<Feather name="trash-2" />} size="sm" />
         </Box>
@@ -118,16 +115,16 @@ const TaskItem = (props: Props) => {
           />
         ) : (
           <AnimatedTaskLabel
-            onPress={onPressLabel}
             textColor={activeTextColor}
             inactiveTextColor={doneTextColor}
             strikethrough={isDone}
+            onPress={onPressLabel}
           >
             {subject}
           </AnimatedTaskLabel>
         )}
       </HStack>
-    </SwipeableView>
+    </SwipableView>
   )
 }
 
