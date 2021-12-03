@@ -1,6 +1,6 @@
 # Smoothly Animated ToDo App built with React Native
 
-![Thumbnail](./doc/thumb.jpg)
+![Thumbnail](./doc/thumb.png)
 
 ## Stack
 
@@ -37,4 +37,3 @@ This project can be run from the Expo client app.
 yarn
 yarn start
 ```
-
